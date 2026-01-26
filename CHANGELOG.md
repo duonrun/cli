@@ -5,11 +5,12 @@
 Initial version.
 
 ### Added
-- Added command-specific help, a built-in `commands` command for autocomplete,
+
+* Added command-specific help, a built-in `commands` command for autocomplete,
   and richer help/indent helpers.
-- Added `info`, `success`, `warn`, `error`, and `echoln` helpers on `Command`.
-- Added support for `--key=value` options, including values containing `=`.
-- Added output color handling improvements, including background-only colors and
+* Added `info`, `success`, `warn`, `error`, and `echoln` helpers on `Command`.
+* Added support for `--key=value` options, including values containing `=`.
+* Added output color handling improvements, including background-only colors and
   conditional coloring based on terminal support.
-- Added the `debug` flag on `Runner`.
-- Added helpers for composing command collections and running scripts.
+* Added the `debug` flag on `Runner`.
+* Added helpers for composing command collections and running scripts.

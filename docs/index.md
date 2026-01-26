@@ -4,13 +4,11 @@ title: Introduction
 Duon Cli is a command line interface helper like
 [Laravel's Artisan](https://laravel.com/docs/9.x/artisan) with way less magic.
 
-Installation
-------------
+## Installation
 
     composer require duon/cli
 
-Quick Start
------------
+## Quick Start
 
 Create a Command:
 

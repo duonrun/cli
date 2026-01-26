@@ -76,11 +76,11 @@ class OutputTest extends TestCase
 	public function testIndent(): void
 	{
 		$output = new Output('php://output');
-		$lorem = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam ' .
-			'nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, ' .
-			'sed diam voluptua. At vero eos et accusam et justo duo dolores et ea ' .
-			'rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ' .
-			'ipsum dolor sit amet.';
+		$lorem = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam '
+			. 'nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, '
+			. 'sed diam voluptua. At vero eos et accusam et justo duo dolores et ea '
+			. 'rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem '
+			. 'ipsum dolor sit amet.';
 		$split = explode("\n", $output->indent($lorem, 4, 40));
 
 		$this->assertSame('    Lorem ipsum dolor sit amet, consetetur', $split[0]);

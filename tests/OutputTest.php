@@ -10,6 +10,7 @@ class OutputTest extends TestCase
 {
 	public function testForegroundColors(): void
 	{
+		putenv('FORCE_COLOR=1');
 		$output = new Output('php://output');
 
 		$this->assertSame("\033[0;30mtest\033[0m", $output->color('test', 'black'));
@@ -33,19 +34,23 @@ class OutputTest extends TestCase
 		$this->assertSame("\033[0;37mtest\033[0m", $output->color('test', 'lightgrey'));
 		$this->assertSame("\033[1;37mtest\033[0m", $output->color('test', 'white'));
 		$this->assertSame('test', $output->color('test'));
+		putenv('FORCE_COLOR');
 	}
 
 	public function testHasColorSupport(): void
 	{
+		putenv('FORCE_COLOR=1');
 		$output = new Output('php://output');
 		$this->assertSame("\033[0;31mtest\033[0m", $output->color('test', 'red'));
 		putenv('NO_COLOR=1');
 		$this->assertSame('test', $output->color('test', 'red'));
 		putenv('NO_COLOR');
+		putenv('FORCE_COLOR');
 	}
 
 	public function testBackgroundColors(): void
 	{
+		putenv('FORCE_COLOR=1');
 		$output = new Output('php://output');
 
 		$this->assertSame("\033[0;37;40mtest\033[0m", $output->color('test', 'lightgrey', 'black'));
@@ -71,6 +76,7 @@ class OutputTest extends TestCase
 		$this->assertSame("\033[47mtest\033[0m", $output->color('test', background: 'white'));
 		$this->assertSame("\033[47mtest\033[0m", $output->color('test', background: 'gray'));
 		$this->assertSame("\033[47mtest\033[0m", $output->color('test', background: 'grey'));
+		putenv('FORCE_COLOR');
 	}
 
 	public function testIndent(): void

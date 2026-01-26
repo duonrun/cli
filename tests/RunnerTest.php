@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Duon\Cli\Tests;
 
+use Duon\Cli\Runner;
+
 class RunnerTest extends TestCase
 {
 	public function testShowHelpWhenCalledWithoutCommand(): void
@@ -120,6 +122,15 @@ class RunnerTest extends TestCase
 		$runner = $this->getRunner();
 
 		$this->expectOutputRegex("/Error while.*'err:err'.*Red herring/s");
+		$runner->run();
+	}
+
+	public function testRunFailingCommandWithDebug(): void
+	{
+		$_SERVER['argv'] = ['run', 'err'];
+		$runner = new Runner($this->getCommands(), 'php://output', debug: true);
+
+		$this->expectOutputRegex("/Error while.*'err'.*Red herring.*Traceback:/s");
 		$runner->run();
 	}
 }

@@ -45,6 +45,15 @@ Create a Command:
         public function run(): int
         {
             $this->echo("Run my command\n");
+            
+            // Output helpers with color support
+            $this->info("Informational message");
+            $this->success("Success message");
+            $this->warn("Warning message");
+            $this->error("Error message");
+            
+            // echoln adds a newline automatically
+            $this->echoln("Message with automatic newline");
 
             return 0;
         }
@@ -58,8 +67,58 @@ Create a Command:
         {
             $this->helpHeader(withOptions: true);
             $this->helpOption('-s, --stuff <stuff>', 'Description of --stuff');
+            $this->helpOption('-v, --verbose', 'Enable verbose output');
         }
     }
+
+## Features
+
+### Output Methods
+
+* `echo(string $message, string $color = '', string $background = '')`
+  Output text
+* `echoln(string $message, string $color = '', string $background = '')`
+  Output text with newline
+* `info(string $message)` - Output informational message
+* `success(string $message)` - Output success message (green)
+* `warn(string $message)` - Output warning message (yellow)
+* `error(string $message)` - Output error message (red)
+* `color(string $text, string $color, string $background = '')`
+  Return colored text
+* `indent(string $text, int $indent, ?int $max = null)`
+  Indent and wrap text
+
+### Available Colors
+
+Foreground: `black`, `gray`/`grey`, `red`, `lightred`, `green`,
+`lightgreen`, `brown`, `yellow`, `blue`, `lightblue`, `purple`,
+`lightpurple`, `magenta`, `lightmagenta`, `cyan`, `lightcyan`,
+`lightgray`/`lightgrey`, `white`
+
+Background: `black`, `red`, `green`, `yellow`, `blue`, `purple`,
+`magenta`, `cyan`, `gray`/`grey`, `white`
+
+### Command-Line Options
+
+Options support both space and equals syntax:
+
+    php run mycommand --key value
+    php run mycommand --key=value
+    php run mycommand --key="value with spaces"
+
+Use the `Opts` class to parse command-line options in your commands.
+
+### Built-in Commands
+
+* `help` - Display help for all commands or a specific command
+* `commands` - List all command names (useful for shell autocomplete)
+
+### Debug Mode
+
+Enable debug mode in the Runner to display full stack traces when
+commands throw exceptions:
+
+    $runner = new Runner($commands, debug: true);
 
 Create a runner script, e. g. `run.php` or simply `run`:
 
@@ -71,7 +130,9 @@ Create a runner script, e. g. `run.php` or simply `run`:
     use MyCommand;
 
     $commands = new Commands([new MyCommand()]);
-    $runner = new Runner($commands);
+    
+    // Optional: enable debug mode to show stack traces on errors
+    $runner = new Runner($commands, debug: false);
     $runner->run();
 
 Run the command:
@@ -90,3 +151,7 @@ Run the command:
 
     $ php run help mycommand
     Help entry for my command
+    
+    $ php run commands
+    List all available command names (useful for shell
+    autocomplete)

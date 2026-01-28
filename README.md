@@ -70,12 +70,6 @@ Running my command
 Command completed!
 ```
 
-See full documentation at [duon.sh/cli](https://duon.sh/cli)
-
-## Requirements
-
-- PHP 8.5 or higher
-
 ## License
 
 This project is licensed under the [MIT license](LICENSE.md).

@@ -1,3 +1,0 @@
-{
-	"extends": "./vendor/duon/dev/cfg/markdownlint.jsonc",
-}

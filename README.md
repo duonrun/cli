@@ -78,4 +78,4 @@ See full documentation at [duon.sh/cli](https://duon.sh/cli)
 
 ## License
 
-MIT License. See [LICENSE.md](LICENSE.md) for details.
+This project is licensed under the [MIT license](LICENSE.md).

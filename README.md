@@ -11,62 +11,70 @@ A command line interface helper like
 
 ## Features
 
-* Simple command creation with automatic help generation
-* Built-in color support for terminal output
-* Command-specific help with `php run help <command>`
-* Built-in `commands` command for shell autocomplete
-* Support for `--key=value` and `--key value` option syntax
-* Output helpers: `info()`, `success()`, `warn()`, `error()`,
+- Simple command creation with automatic help generation
+- Built-in color support for terminal output
+- Command-specific help with `php run help <command>`
+- Built-in `commands` command for shell autocomplete
+- Support for `--key=value` and `--key value` option syntax
+- Output helpers: `info()`, `success()`, `warn()`, `error()`,
   `echoln()`
-* Text indentation and wrapping with `indent()`
-* Debug mode for detailed error traces
-* 100% test coverage
+- Text indentation and wrapping with `indent()`
+- Debug mode for detailed error traces
+- 100% test coverage
 
 ## Installation
 
-    composer require duon/cli
+```bash
+composer require duon/cli
+```
 
 ## Quick Start
 
 Create a command by extending `Duon\Cli\Command`:
 
-    use Duon\Cli\Command;
+```php
+use Duon\Cli\Command;
 
-    class MyCommand extends Command {
-        protected string $name = 'mycommand';
-        protected string $group = 'MyGroup';
-        protected string $description = 'This is my command';
+class MyCommand extends Command {
+    protected string $name = 'mycommand';
+    protected string $group = 'MyGroup';
+    protected string $description = 'This is my command';
 
-        public function run(): int
-        {
-            $this->info("Running my command");
-            $this->success("Command completed!");
-            return 0;
-        }
+    public function run(): int
+    {
+        $this->info("Running my command");
+        $this->success("Command completed!");
+        return 0;
     }
+}
+```
 
 Create a runner script:
 
-    <?php
-    require __DIR__ . '/vendor/autoload.php';
+```php
+<?php
+require __DIR__ . '/vendor/autoload.php';
 
-    use Duon\Cli\{Runner, Commands};
+use Duon\Cli\{Runner, Commands};
 
-    $commands = new Commands([new MyCommand()]);
-    $runner = new Runner($commands);
-    $runner->run();
+$commands = new Commands([new MyCommand()]);
+$runner = new Runner($commands);
+$runner->run();
+```
 
 Run your command:
 
-    $ php run mycommand
-    Running my command
-    Command completed!
+```bash
+$ php run mycommand
+Running my command
+Command completed!
+```
 
 See full documentation at [duon.sh/cli](https://duon.sh/cli)
 
 ## Requirements
 
-* PHP 8.5 or higher
+- PHP 8.5 or higher
 
 ## License
 

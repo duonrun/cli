@@ -2,11 +2,9 @@
 .cache
 .env
 .php*.cache
-__pycache__
 clover.xml
 composer.lock
 infection.json5
 /coverage
-/site
 /tmp
 /vendor

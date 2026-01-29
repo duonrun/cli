@@ -41,12 +41,11 @@
 			"./vendor/bin/phpunit --testdox --path-coverage --coverage-text --coverage-php=coverage/cover.php --colors=always",
 			"./vendor/bin/coverlyzer coverage/cover.php"
 		],
-		"all": [
+		"ci": [
 			"composer coverage",
 			"composer types",
 			"composer mdlint"
 		],
-		"benchmark": "php bench/run.php",
 		"post-install-cmd": [
 			"Duon\\Development\\Config::sync"
 		],

@@ -10,10 +10,7 @@
 		}
 	],
 	"homepage": "https://duon.run/cli",
-	"keywords": [
-		"duon",
-		"cli"
-	],
+	"keywords": ["duon", "cli"],
 	"autoload": {
 		"psr-4": {
 			"Duon\\Cli\\": "src/"

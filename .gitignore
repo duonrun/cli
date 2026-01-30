@@ -1,8 +1,6 @@
 *.log
 .cache
 .env
-.editorconfig
-.markdownlint.jsonc
 .php*.cache
 .php-cs-fixer.php
 clover.xml

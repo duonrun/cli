@@ -4,9 +4,12 @@
 .editorconfig
 .markdownlint.jsonc
 .php*.cache
+.php-cs-fixer.php
 clover.xml
 composer.lock
 infection.json5
+phpunit.xml
+psalm.xml
 /coverage
 /tmp
 /vendor
